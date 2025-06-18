@@ -9,7 +9,7 @@ This project demonstrates Retrieval-Augmented Generation (RAG) over PDF document
 1. **Clone the repository:**
    ```bash
    git clone <repository-url>
-   cd <repository-name>
+   cd ollama-pdf-rag
    ```
 
 2. **Install Python dependencies:**
