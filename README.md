@@ -8,7 +8,7 @@ This project demonstrates Retrieval-Augmented Generation (RAG) over PDF document
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/pranav271103/ollama-pdf-rag
    cd ollama-pdf-rag
    ```
 
