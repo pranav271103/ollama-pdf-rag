@@ -8,8 +8,8 @@ This project demonstrates Retrieval-Augmented Generation (RAG) over PDF document
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/pranav271103/ollama-pdf-rag
-   cd ollama-pdf-rag
+   git clone <repository-url>
+   cd <repository-name>
    ```
 
 2. **Install Python dependencies:**
@@ -41,7 +41,7 @@ This project demonstrates Retrieval-Augmented Generation (RAG) over PDF document
 1. Place your PDF document(s) in the project directory.
 2. Open and run the `RAG.ipynb` notebook:
    ```bash
-   jupyter notebook RAG.ipynb
+   jupyter notebook ollama_pdf_rag-main/RAG.ipynb
    ```
 3. Follow the notebook steps:
    - Install any missing dependencies as prompted.
@@ -55,6 +55,10 @@ This project demonstrates Retrieval-Augmented Generation (RAG) over PDF document
 - If you encounter dependency issues, refer to the troubleshooting steps in the notebook (e.g., reinstalling ONNX, unstructured, or creating a new environment).
 - Ensure that the required Ollama models are pulled before running the relevant cells.
 - For best results, keep your Python and Jupyter environments up to date.
+
+## License
+
+This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
 
 ---
 
