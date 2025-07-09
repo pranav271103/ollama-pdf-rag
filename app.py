@@ -11,17 +11,14 @@ from langchain.chains import RetrievalQA
 from langchain_community.chat_models import ChatOllama
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-# Setup logger
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 st.set_page_config(page_title="RAG via Notebook", layout="wide")
 st.title("📄 PDF RAG App (Notebook Version)")
 
-# Step 1: Upload PDF
 uploaded_file = st.file_uploader("Upload your PDF", type=["pdf"])
 
-# Step 2: Select Ollama model
 try:
     models = ollama.list()["models"]
     model_names = [m["name"] for m in models]
@@ -32,7 +29,7 @@ except Exception as e:
 selected_model = st.selectbox("Select Ollama Model", model_names)
 
 if uploaded_file:
-    # Save uploaded file temporarily
+
     with tempfile.TemporaryDirectory() as tmp_dir:
         pdf_path = os.path.join(tmp_dir, uploaded_file.name)
         with open(pdf_path, "wb") as f:
@@ -40,7 +37,6 @@ if uploaded_file:
 
         st.success("PDF uploaded and saved!")
 
-        # Step 3: Load and split PDF
         st.info("🔍 Loading and splitting PDF...")
         loader = UnstructuredPDFLoader(pdf_path)
         docs = loader.load()
@@ -50,14 +46,12 @@ if uploaded_file:
 
         st.success(f"✅ Split into {len(chunks)} chunks.")
 
-        # Step 4: Create embeddings and vector DB
         st.info("🔗 Generating embeddings and vector DB...")
         embeddings = OllamaEmbeddings(model="nomic-embed-text")
         vectordb = Chroma.from_documents(chunks, embeddings, collection_name="notebookRAG")
 
         st.success("✅ Vector DB ready!")
 
-        # Step 5: Create RAG QA chain
         llm = ChatOllama(model=selected_model, temperature=0.0)
         qa_chain = RetrievalQA.from_chain_type(
             llm=llm,
@@ -65,7 +59,6 @@ if uploaded_file:
             return_source_documents=True
         )
 
-        # Step 6: Ask a question
         user_query = st.text_input("Ask a question about the PDF:")
 
         if user_query:
